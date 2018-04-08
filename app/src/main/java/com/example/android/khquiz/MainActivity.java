@@ -4,20 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    RadioGroup answerGroup1;
-    RadioGroup answerGroup2;
-    private RadioButton radioAnswer1Button;
-    private RadioButton radioAnswer2Button;
-    Button submitScore = findViewById(R.id.submit_score);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,73 +22,74 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         answerGroup1 = findViewById(R.id.q1_radio_group);
         answerGroup2 = findViewById(R.id.q2_radio_group);
-
+        AnswerOne = (CheckBox) findViewById(R.id.q3a1);
+        AnswerTwo = (CheckBox) findViewById(R.id.q3a2);
+        AnswerThree = (CheckBox) findViewById(R.id.q3a3);
+        AnswerFour = (CheckBox) findViewById(R.id.q3a4);
+        AnswerFive = (CheckBox) findViewById(R.id.q3a5);
+        AnswerSix = (CheckBox) findViewById(R.id.q3a6);
     }
 
+    RadioGroup answerGroup1;
+    RadioGroup answerGroup2;
+    CheckBox AnswerOne;
+    CheckBox AnswerTwo;
+    CheckBox AnswerThree;
+    CheckBox AnswerFour;
+    CheckBox AnswerFive;
+    CheckBox AnswerSix;
     int score;
+    Boolean q1 = false;
+    Boolean q2 = false;
+    EditText q4Answer;
 
-    // method to check q1
-    public void checkq1() {
-        int selectedId = answerGroup1.getCheckedRadioButtonId();
-        radioAnswer1Button = (RadioButton) findViewById(selectedId);
-        if (radioAnswer1Button.getText() == "2002") {
-            score++;
-        }
-    }
-    // method to check q2
-    public void checkQ2() {
-        int selectedId = answerGroup2.getCheckedRadioButtonId();
-        radioAnswer2Button = (RadioButton) findViewById(selectedId);
-        if (radioAnswer2Button.getText() == "Deep Jungle") {
-            score++;
-        }
-    }
-
-
-
-
-
- /*   public void onRadioButtonClicked(View view) {
+// activates when radio group 1 button is clicked, checks for correct answer
+    public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.q1a1:
-                if (checked)
-                    break;
-            case R.id.q1a2:
-                if (checked)
-                    //correct answer
-                    score++;
-                else score--;
-                break;
-            case R.id.q1a3:
-                if (checked)
-                    break;
-            case R.id.q1a4:
-                if (checked)
-                    break;
-
-
+        if (view.getId() == R.id.q1a2){
+            q1 = true;
+        } else {
+            q1 = false;
         }
 
     }
-*/
+// activates when radio group 2 button is clicked, checks for correct answer
+    public void onRadioButton2Clicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+        // Check which radio button was clicked
+       if (view.getId() == R.id.q2a3){
+           q2 = true;
+       } else {
+           q2 = false;
+       }
+
+    }
+
+    //check if Question One is correct
+    private void checkQ1() {
+        if (q1) {
+            score++;
+        }
+    }
+
+    //check if Question Two is correct
+    private void checkQ2() {
+        if (q2) {
+            score++;
+        }
+    }
 
     //method to check the checkbox question
 
     public void checkQ3() {
-        CheckBox AnswerOne = (CheckBox) findViewById(R.id.q3a1);
         Boolean Q3A1 = AnswerOne.isChecked();
-        CheckBox AnswerTwo = (CheckBox) findViewById(R.id.q3a2);
         Boolean Q3A2 = AnswerTwo.isChecked();
-        CheckBox AnswerThree = (CheckBox) findViewById(R.id.q3a3);
         Boolean Q3A3 = AnswerThree.isChecked();
-        CheckBox AnswerFour = (CheckBox) findViewById(R.id.q3a4);
         Boolean Q3A4 = AnswerFour.isChecked();
-        CheckBox AnswerFive = (CheckBox) findViewById(R.id.q3a5);
         Boolean Q3A5 = AnswerFive.isChecked();
-        CheckBox AnswerSix = (CheckBox) findViewById(R.id.q3a6);
         Boolean Q3A6 = AnswerSix.isChecked();
         if (Q3A1 && Q3A2 && Q3A3 && Q3A4 && !Q3A5 && !Q3A6) {
             score++;
@@ -101,45 +99,72 @@ public class MainActivity extends AppCompatActivity {
     // Method to check the edittext question
 
     public void checkQ4() {
-        EditText q4Answer = (EditText) findViewById(R.id.q4_edit_text);
+        q4Answer = (EditText) findViewById(R.id.q4_edit_text);
         String guestAnswer = q4Answer.getText().toString();
         Log.v("MainActivity", guestAnswer);
-        if ((guestAnswer == "Xion") //|| (guestAnswer == "Shion") || (guestAnswer == "Xion.") || (guestAnswer == "Xion ")
-                ) {
+        if ((guestAnswer.equalsIgnoreCase("Xion")) || (guestAnswer.equalsIgnoreCase("Shion")) || (guestAnswer.equalsIgnoreCase("Xion.")) || (guestAnswer.equalsIgnoreCase("Xion "))) {
             score++;
         }
     }
 
-    submitScore.setOnClickListener(new View.OnClickListener()
-    {
-        @Override
-        public void onClick (View v){
-        //is called when submit button is pushed. Checks answers and determines results.
-        //  public void submitScore(View view) {
-        checkq1();
+    //displays the results
+  /**  private void displayScore(String results) {
+        TextView scoreText = (TextView) findViewById(R.id.results_text_view);
+        String checkText = (String) scoreText.getText();
+        if (checkText.isEmpty())
+            scoreText.setText(results);
+
+    }*/
+
+    //submitScore button
+    public void submitScore(View view) {
+        checkQ1();
         checkQ2();
         checkQ3();
         checkQ4();
-        String results = "Congratulations! You got " + score + " correct!";
-        displayScore(results);
-    }
+       // displayScore(scoreMessage());
+        Toast.makeText(getApplicationContext(),scoreMessage(),Toast.LENGTH_SHORT).show();
     }
 
-//displays the results
-private void displayScore(String results){
-        TextView scoreText=(TextView)findViewById(R.id.results_text_view);
-        String checkText=(String)scoreText.getText();
-        if(checkText.isEmpty())
-        scoreText.setText(results);
+    //determines score message
+    public String scoreMessage() {
+        switch(score) {
+            case (0):
+                default: {
+                return "You missed every question. Maybe it\'s time for a replay of the games?";
+            }
+            case (1): {
+                return "You had one correct answer. Might need to explore the side games again!";
+            }
+            case (2): {
+                return "You got half of them. Impressive, with how confusing these games can be storywise. Study up and try again!";
+            }
+            case (3): {
+                return "Oh, so close! You only missed one!";
+            }
+            case (4): {
+                return "You are a Keyblade Master!";
+            }
 
         }
 
-//reset scores
-public void resetScores(View view){
-        TextView scoreText=(TextView)findViewById(R.id.results_text_view);
+    }
+
+    //reset scores
+    public void resetScores(View view) {
+        TextView scoreText = (TextView) findViewById(R.id.results_text_view);
         scoreText.setText("");
-        score=0;
+        score = 0;
         answerGroup1.clearCheck();
         answerGroup2.clearCheck();
-        }
-        }
+        if (AnswerOne.isChecked()) AnswerOne.toggle();
+        if (AnswerTwo.isChecked()) AnswerTwo.toggle();
+        if (AnswerThree.isChecked()) AnswerThree.toggle();
+        if (AnswerFour.isChecked()) AnswerFour.toggle();
+        if (AnswerFive.isChecked()) AnswerFive.toggle();
+        if (AnswerSix.isChecked()) AnswerSix.toggle();
+        q1 = false;
+        q2 = false;
+        q4Answer.setText("");
+    }
+}
