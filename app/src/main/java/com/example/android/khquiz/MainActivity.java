@@ -1,5 +1,4 @@
 package com.example.android.khquiz;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +9,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 public class MainActivity extends AppCompatActivity {
 
 
