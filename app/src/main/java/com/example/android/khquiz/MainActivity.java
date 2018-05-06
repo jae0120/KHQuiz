@@ -14,8 +14,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,32 +41,29 @@ public class MainActivity extends AppCompatActivity {
     Boolean q2 = false;
     EditText q4Answer;
 
-// activates when radio group 1 button is clicked, checks for correct answer
+    // activates when radio group 1 button is clicked, checks for correct answer
     public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked
-        if (view.getId() == R.id.q1a2){
+        if (view.getId() == R.id.q1a2) {
             q1 = true;
         } else {
             q1 = false;
         }
 
     }
-// activates when radio group 2 button is clicked, checks for correct answer
+
+    // activates when radio group 2 button is clicked, checks for correct answer
     public void onRadioButton2Clicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked
-       if (view.getId() == R.id.q2a3){
-           q2 = true;
-       } else {
-           q2 = false;
-       }
+        if (view.getId() == R.id.q2a3) {
+            q2 = true;
+        } else {
+            q2 = false;
+        }
 
     }
-
     //check if Question One is correct
+
     private void checkQ1() {
         if (q1) {
             score++;
@@ -101,20 +96,10 @@ public class MainActivity extends AppCompatActivity {
     public void checkQ4() {
         q4Answer = (EditText) findViewById(R.id.q4_edit_text);
         String guestAnswer = q4Answer.getText().toString();
-        Log.v("MainActivity", guestAnswer);
         if ((guestAnswer.equalsIgnoreCase("Xion")) || (guestAnswer.equalsIgnoreCase("Shion")) || (guestAnswer.equalsIgnoreCase("Xion.")) || (guestAnswer.equalsIgnoreCase("Xion "))) {
             score++;
         }
     }
-
-    //displays the results
-  /**  private void displayScore(String results) {
-        TextView scoreText = (TextView) findViewById(R.id.results_text_view);
-        String checkText = (String) scoreText.getText();
-        if (checkText.isEmpty())
-            scoreText.setText(results);
-
-    }*/
 
     //submitScore button
     public void submitScore(View view) {
@@ -122,28 +107,28 @@ public class MainActivity extends AppCompatActivity {
         checkQ2();
         checkQ3();
         checkQ4();
-       // displayScore(scoreMessage());
-        Toast.makeText(getApplicationContext(),scoreMessage(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), scoreMessage(), Toast.LENGTH_SHORT).show();
+        score = 0;
     }
 
     //determines score message
     public String scoreMessage() {
-        switch(score) {
+        switch (score) {
             case (0):
-                default: {
-                return "You missed every question. Maybe it\'s time for a replay of the games?";
+            default: {
+                return getString(R.string.zero_score);
             }
             case (1): {
-                return "You had one correct answer. Might need to explore the side games again!";
+                return getString(R.string.score_one);
             }
             case (2): {
-                return "You got half of them. Impressive, with how confusing these games can be storywise. Study up and try again!";
+                return getString(R.string.score_two);
             }
             case (3): {
-                return "Oh, so close! You only missed one!";
+                return getString(R.string.score_three);
             }
             case (4): {
-                return "You are a Keyblade Master!";
+                return getString(R.string.score_perfect);
             }
 
         }
