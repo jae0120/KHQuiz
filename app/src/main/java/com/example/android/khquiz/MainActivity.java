@@ -152,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
     //reset scores
     public void resetScores(View view) {
-        TextView scoreText = (TextView) findViewById(R.id.results_text_view);
-        scoreText.setText("");
         score = 0;
         answerGroup1.clearCheck();
         answerGroup2.clearCheck();

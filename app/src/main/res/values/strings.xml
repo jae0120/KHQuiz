@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">KHQuiz</string>
+    <string name="title_intro">Prepare yourself for...</string>
+    <string name="Q1">Question One: What year was the first Kingdom Hearts released?</string>
+    <string name="q1a1">2000</string>
+    <string name="q1a2">2002</string>
+    <string name="q1a3">2004</string>
+    <string name="q1a4">2005</string>
+    <string name="Q2">Question Two: Which world was not in KH2?</string>
+    <string name="q2a1">Agrabah</string>
+    <string name="q2a2">1000 Acre Woods</string>
+    <string name="q2a3">Deep Jungle</string>
+    <string name="q2a4">Port Royal</string>
+    <string name="Q3">Question Three: Which of the following characters can use the keyblade?</string>
+    <string name="q3a1">Sora</string>
+    <string name="q3a2">Kairi</string>
+    <string name="q3a3">Roxas</string>
+    <string name="q3a4">Mickey</string>
+    <string name="q3a5">Goofy</string>
+    <string name="q3a6">Donald Duck</string>
+    <string name="Q4">Question Four: Who is Roxas\'s and Axel\'s other best friend?</string>
+    <string name="submit_btn">Submit</string>
+    <string name="reset_btn">Reset</string>
 </resources>
