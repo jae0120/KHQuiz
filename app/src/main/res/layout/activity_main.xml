@@ -26,6 +26,8 @@
             android:src="@drawable/kh3transparent"
             android:layout_marginTop="-350dp"
             />
+        <!-- Image obtained from https://www.khinsider.com/kingdom-hearts-3/images/artwork
+        Fair use for educational purposes, will not be used commercially -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
