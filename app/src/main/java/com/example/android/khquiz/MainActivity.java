@@ -1,13 +1,10 @@
 package com.example.android.khquiz;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
@@ -111,22 +108,23 @@ public class MainActivity extends AppCompatActivity {
 
     //determines score message
     public String scoreMessage() {
+        String scoreString = "" + score;
         switch (score) {
             case (0):
             default: {
-                return getString(R.string.zero_score);
+                return getString(R.string.zero_score, scoreString);
             }
             case (1): {
-                return getString(R.string.score_one);
+                return getString(R.string.score_one, scoreString);
             }
             case (2): {
-                return getString(R.string.score_two);
+                return getString(R.string.score_two, scoreString);
             }
             case (3): {
-                return getString(R.string.score_three);
+                return getString(R.string.score_three, scoreString);
             }
             case (4): {
-                return getString(R.string.score_perfect);
+                return getString(R.string.score_perfect, scoreString);
             }
 
         }

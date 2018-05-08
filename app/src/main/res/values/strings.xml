@@ -21,9 +21,9 @@
     <string name="Q4">Question Four: Who is Roxas\'s and Axel\'s other best friend?</string>
     <string name="submit_btn">Submit</string>
     <string name="reset_btn">Reset</string>
-    <string name="zero_score">You missed every question. Maybe it\'s time for a replay of the games?</string>
-    <string name="score_one">You had one correct answer. Might need to explore the side games again!</string>
-    <string name="score_two">You got half of them. Impressive, with how confusing these games can be storywise. Study up and try again!</string>
-    <string name="score_three">Oh, so close! You only missed one!</string>
-    <string name="score_perfect">You are a Keyblade Master!</string>
+    <string name="zero_score">%1$s/4 - You missed every question. Maybe it\'s time for a replay of the games?</string>
+    <string name="score_one">%1$s/4 - You had one correct answer. Might need to explore the side games again!</string>
+    <string name="score_two">%1$s/4 - You got half of them. Impressive, with how confusing these games can be storywise. Study up and try again!</string>
+    <string name="score_three">%1$s/4 - Oh, so close! You only missed one!</string>
+    <string name="score_perfect">%1$s/4 - You are a Keyblade Master!</string>
 </resources>
